@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.tax.mappers.memberMapper">
+
+	<!-- 가입 -->
+	<insert id="register">
+		insert into taxmember(userId, userPass, userName, userEmail)
+				 values(#{userId}, #{userPass}, #{userName},#{userEmail})	
+	</insert>
+
+	<!-- 조회(로그인 위함, userPass는 탈퇴를 위함) --><!-- parameterType은 생략가능 -->
+	<select id="login" resultType="com.tax.domain.MemberVO">
+		select userId, userName, userPass
+		from taxmember
+		where userId = #{userId} and userPass = #{userPass}
+	</select>
+
+	<!-- 회원정보 비밀번호 수정 -->
+	<update id="modify">
+		update taxmember
+		set userPass = #{userPass}
+		where userId = #{userId}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="withdraw">
+		delete from taxmember
+		where userId = #{userId} and userPass = #{userPass}	
+	</delete>
+	
+	<!-- 중복확인 체크 -->
+	<select id="idCheck" resultType="com.tax.domain.MemberVO">
+		select userId 
+		from taxmember
+		where userId = #{userId}
+	</select>
+	
+	
+
+</mapper>
+
+
+
+
+

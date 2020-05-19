@@ -1,0 +1,42 @@
+#readLocation{
+	margin-top:170px;
+	margin-bottom:170px;
+} 
+
+#deleteConfirm{
+	margin-top:250px;
+	margin-bottom:250px;
+} 
+
+#commentLocation{
+	margin-top:100px;
+}
+
+#withdrawLocation{
+	text-align:center;
+}
+
+#headerAlign{
+	text-align:center;
+	margin-bottom:50px;
+}
+
+#qnaAlign th, td {
+	text-align:center;
+}
+
+#theadNames tr th{
+	background-color:#F2F2F2;
+	border-top:2px solid #A9A9F5;
+}
+
+#failedWithdraw{
+	color:red;
+}
+
+#modifyBoxLocation{
+	display : block;
+	margin : 0 auto;
+	width:400px;
+	height:100px;
+}
