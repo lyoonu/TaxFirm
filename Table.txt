@@ -1,0 +1,64 @@
+
+--테이블 생성
+create table qnaboard (
+    bno       number            not null,
+    title     varchar2(30)      not null,
+    content   varchar2(2000)    not null,
+    writer    varchar2(30)      not null,
+    regDate   date              default sysdate,
+    viewCnt   number            default 0,
+    primary key(bno)
+);
+
+--시퀀스 생성 : 시작값을 1부터 지정하기
+create sequence qnaboard_seq 
+    increment by 1
+    start with 0
+    minvalue 0
+    maxvalue 9999999;
+
+
+--글 작성 테스트
+insert into qnaboard(bno,title,content,writer) values (qnaboard_seq.nextval,'제목1','내용연습','김길동');
+
+
+--댓글 테이블 생성
+create table qnacomment (
+    bno       number            not null,
+    rno       number            not null,
+    content   varchar2(2000)    not null,
+    writer    varchar2(30)      not null,
+    regDate   date              default sysdate,
+    primary key(bno, rno)
+);
+
+--키설정
+alter table qnacomment
+    add constraint qnacomment_bno foreign key(bno)
+    references qnaboard(bno)
+    ON DELETE CASCADE;
+
+--댓글 시퀀스생성
+create sequence qnacomment_seq;
+
+
+--멤버테이블 생성
+create table taxmember (
+    userId      varchar2(50)        not null,
+    userPass    varchar2(50)        not null,
+    userName    varchar2(50)        not null,
+    userEmail   varchar2(100)       not null,
+    regDate     date                default sysdate,
+    primary key(userId)
+);
+
+
+--커밋
+commit;
+
+
+
+
+
+
+
